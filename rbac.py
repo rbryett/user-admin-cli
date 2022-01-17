@@ -3,8 +3,8 @@ import csv
 import os
 
 USERS_CSV = os.environ.get("USERS_CSV") or "test/testdata/users-management.csv"
-POLICIES_CSV = os.environ.get("USERS_CSV") or "test/testdata/roles-test.csv"
-DATA_CLASSIFICATION_CSV = os.environ.get("USERS_CSV") or "test/testdata/data-classification.csv"
+POLICIES_CSV = os.environ.get("POLICIES_CSV") or "test/testdata/roles-test.csv"
+DATA_CLASSIFICATION_CSV = os.environ.get("DATA_CLASSIFICATION_CSV") or "test/testdata/data-classification.csv"
 
 
 class NoGroupFound(Exception):
