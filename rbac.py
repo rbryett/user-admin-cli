@@ -149,7 +149,7 @@ class Users(object):
                         print("removed user '{}' from entries".format(user.name))
 
             with open(USERS_CSV, 'w') as csv_file:
-                writer = csv.writer(csv_file)
+                writer = csv.writer(csv_file, lineterminator="\n")
                 writer.writerows(amended_entries)
 
 
@@ -297,7 +297,7 @@ class Policies(object):
                         print("removed policy '{}' from entries".format(policy.name))
 
             with open(POLICIES_CSV, 'w') as csv_file:
-                writer = csv.writer(csv_file)
+                writer = csv.writer(csv_file, lineterminator="\n")
                 writer.writerows(amended_entries)
 
 
@@ -456,7 +456,7 @@ class DataClassifications(object):
                               data_classification.table_name))
 
             with open(DATA_CLASSIFICATION_CSV, 'w') as csv_file:
-                writer = csv.writer(csv_file)
+                writer = csv.writer(csv_file, lineterminator="\n")
                 writer.writerows(amended_entries)
 
 
