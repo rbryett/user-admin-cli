@@ -127,7 +127,7 @@ class Users(object):
 
             # Write all entries, include new entry back to CSV with additional headers if applicable
             with open(USERS_CSV, 'w') as csv_file:
-                writer = csv.DictWriter(csv_file, self.headers)
+                writer = csv.DictWriter(csv_file, self.headers, lineterminator="\n")
                 writer.writeheader()
                 writer.writerows(csv_entries)
 
@@ -275,7 +275,7 @@ class Policies(object):
 
             # Write all entries, include new entry back to CSV with additional headers if applicable
             with open(POLICIES_CSV, 'w') as csv_file:
-                writer = csv.DictWriter(csv_file, self.headers)
+                writer = csv.DictWriter(csv_file, self.headers, lineterminator="\n")
                 writer.writeheader()
                 writer.writerows(csv_entries)
 
@@ -422,7 +422,7 @@ class DataClassifications(object):
 
             # Write all entries, include new entry back to CSV with additional headers if applicable
             with open(DATA_CLASSIFICATION_CSV, 'w') as csv_file:
-                writer = csv.DictWriter(csv_file, self.headers)
+                writer = csv.DictWriter(csv_file, self.headers, lineterminator="\n")
                 writer.writeheader()
                 writer.writerows(csv_entries)
 
