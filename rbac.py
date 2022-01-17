@@ -302,7 +302,7 @@ class Policies(object):
 
 
 class Policy(object):
-    def __init__(self, policy_name, groups):
+    def __init__(self, policy_name, groups=None):
         if policy_name is None:
             raise ValueError("no policy name provided")
         self.name = policy_name
@@ -461,7 +461,7 @@ class DataClassifications(object):
 
 
 class DataClassification(object):
-    def __init__(self, database_name, table_name, pii):
+    def __init__(self, database_name, table_name=None, pii=None):
         if database_name is None:
             raise ValueError("no policy name provided")
         self.database_name = database_name

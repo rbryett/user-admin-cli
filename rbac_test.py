@@ -99,6 +99,16 @@ def test_user_get_user():
     assert user.name == "test_user" and [ag == eg for ag, eg in zip(user.groups, ["group", "test"])]
 
 
+def test_user_remove():
+    Users().add_user(User(username="test_user", groups=["test", "group"]))
+    num_of_users = 1
+    assert len(Users()) == num_of_users
+    u = User(username="test_user")
+    u.remove()
+    num_of_users -= 1
+    assert len(Policies()) == num_of_users
+
+
 def test_policy_create():
     num_of_policies = len(Policies())
     Policies().add_policy(Policy(policy_name="test_policy", groups=["test", "group"]))
@@ -119,6 +129,16 @@ def test_policy_get_policy():
     Policies().add_policy(Policy(policy_name="test_policy", groups=["test", "group"]))
     policy = Policy.get_policy("test_policy")
     assert policy.name == "test_policy" and [ag == eg for ag, eg in zip(policy.groups, ["group", "test"])]
+
+
+def test_policy_remove():
+    Policies().add_policy(Policy(policy_name="test_policy", groups=["test", "group"]))
+    num_of_policies = 1
+    assert len(Policies()) == num_of_policies
+    p = Policy(policy_name="test_policy")
+    p.remove()
+    num_of_policies -= 1
+    assert len(Policies()) == num_of_policies
 
 
 def test_data_classification_create():
@@ -143,3 +163,22 @@ def test_data_classification_get_dc():
         DataClassification(database_name="test_database", table_name="test_table", pii="true"))
     dc = DataClassification.get_dc("test_database", "test_table")
     assert dc.database_name == "test_database" and dc.table_name == "test_table" and dc.pii == "true"
+
+
+def test_data_classification_remove():
+    DataClassifications().add_data_classification(
+        DataClassification(database_name="test_database", table_name="test_ttable", pii="true"))
+    num_of_dcs = 1
+    assert len(DataClassifications()) == num_of_dcs
+    dc = DataClassification(database_name="test_database")
+    dc.remove()
+    num_of_dcs -= 1
+    assert len(DataClassifications()) == num_of_dcs
+
+
+
+#TODO: Test Custom Exceptions raised correctly
+#TODO: Test new headers are created
+#TODO: Test serialisation
+#TODO: Test Policy, User and DataClassification objects are correctly populated after CSV read
+#TODO: Test List
